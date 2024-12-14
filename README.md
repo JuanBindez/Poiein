@@ -2,7 +2,7 @@
 
 AI based on Seq2Seq
 
-### install Requirements
+### Install Requirements
 
     pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
@@ -12,11 +12,21 @@ AI based on Seq2Seq
 from poiein import Poiein
 
 ai = Poiein(
+    model_name="test_model",
+    training_data_file="data.txt",
     learning_rate=0.001,
-    epochs=250,
+    epochs=450,
 )
 
+
 ai.run_training()
-ai.run_chat()
+
+```
+
+#### After running the training you can test the model
+
+```python
+
+ai.run_chat(load_model_file="test_model.pth")
 
 ```

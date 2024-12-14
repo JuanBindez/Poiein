@@ -2,16 +2,19 @@ from poiein.loader import *
 from poiein.train import *
 from poiein.prompt import chat
 
+
 class Poiein:
-    def __init__(self, model_name: str = "Poieien_model",
+    def __init__(self,
+                model_name: str = "Poiein_model",
                 training_data_file: str = "data.txt",
                 learning_rate: float = 0.001, 
-                epochs: int = 100):
+                epochs: int = 100
+        ):
 
         self.model_name = model_name + ".pth"
+        self.training_data_file = training_data_file
         self.learning_rate = learning_rate
         self.epochs = epochs
-        self.training_data_file = training_data_file
 
     def run_training(self):
         filepath = self.training_data_file
@@ -40,7 +43,7 @@ class Poiein:
         print(f"Model saved as {self.model_name}")
 
     
-    def run_chat(self):
-        model, vocab = load_model(self.model_name)
+    def run_chat(self, load_model_file: str = "Poiein_model.pth"):
+        model, vocab = load_model(load_model_file)
         print("Type 'leave' to end the chat.")
         chat(model, vocab)

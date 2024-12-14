@@ -1,6 +1,6 @@
-from loader import load_model
-from poiein import chat
+from poiein.loader import *
 from poiein.train import *
+from poiein.prompt import chat
 
 class Poiein:
     def __init__(self, model_name: str = "Poieien_model",
@@ -8,7 +8,7 @@ class Poiein:
                 learning_rate: float = 0.001, 
                 epochs: int = 100):
 
-        self.model = model_name + ".pth"
+        self.model_name = model_name + ".pth"
         self.learning_rate = learning_rate
         self.epochs = epochs
         self.training_data_file = training_data_file
@@ -36,11 +36,11 @@ class Poiein:
 
         train(model, dataloader, optimizer, criterion, epochs, device="cuda" if torch.cuda.is_available() else "cpu")
 
-        torch.save({"model_state": model.state_dict(), "vocab": vocab}, self.model)
-        print(f"Model saved as {self.model}")
+        torch.save({"model_state": model.state_dict(), "vocab": vocab}, self.model_name)
+        print(f"Model saved as {self.model_name}")
 
     
     def run_chat(self):
-        model, vocab = load_model(self.model_file)
+        model, vocab = load_model(self.model_name)
         print("Type 'leave' to end the chat.")
         chat(model, vocab)

@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from poiein import Encoder, Decoder, Seq2Seq
+from poiein.train import Encoder, Decoder, Seq2Seq
 
 def load_model(filepath):
     checkpoint = torch.load(filepath, map_location=torch.device("cpu"))

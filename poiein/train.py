@@ -98,4 +98,4 @@ def train(model, dataloader, optimizer, criterion, epochs=10, device="cpu"):
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
-        print(f"Epoch {epoch+1}/{epochs}, Loss: {total_loss:.4f}")
+        print(f"Epoch {epoch+1}/{epochs}, Loss: {total_loss:.8f}")

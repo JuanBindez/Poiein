@@ -8,6 +8,15 @@ AI based on Seq2Seq
 
 ### Quickstart
 
+#### create a txt file with questions and answers, you must separate the dialogs in the file as follows using a | for example: question | response
+
+```txt
+hello|hello how are you?
+I'm fine and you?|I'm fine too
+```
+
+### Training
+
 ```python
 from poiein import Poiein
 
